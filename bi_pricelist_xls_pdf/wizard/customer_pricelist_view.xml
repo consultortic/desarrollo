@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+
+    <record model="ir.ui.view" id="customer_pricelist_extended_report_form">
+        <field name="name">customer.pricelist.extended.form</field>
+        <field name="model">customer.pricelist.extended</field>
+        <field name="arch" type="xml">
+            <form string="Excel Report">
+                <group>
+                    <group>
+                        <field name="excel_file" readonly="1" filename="file_name"/>
+                    </group>
+                    <group>
+                        <field name="file_name" invisible="1"/>
+                    </group>
+                </group>
+                <footer>
+                    <button string="Cancel" name="cancel" special="cancel" class="oe_highlight"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_customer_pricelist_extended_report" model="ir.actions.act_window">
+        <field name="name">customer.pricelist.extended</field>
+        <field name="res_model">customer.pricelist.extended</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <record id="customer_pricelist_wizard_form_view" model="ir.ui.view">
+        <field name="name">customer.pricelist.wiz.form</field>
+        <field name="model">customer.pricelist.wiz</field>
+        <field name="arch" type="xml">
+            <form string="customer Pricelist">
+                <footer>
+                    <button name="print_customer_pricelist_xls_report" string="Excel Report" type="object" class="oe_highlight"/>
+                    <button name="print_customer_pricelist_pdf" string="Pdf Report" type="object" class="oe_highlight"/>
+                    <button string="Cancel" name="cancel" special="cancel" class="oe_highlight"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+
+    <record id="customer_pricelist_action" model="ir.actions.act_window">
+        <field name="name">Custmer Pricelist Report</field>
+        <field name="res_model">customer.pricelist.wiz</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <act_window name="Bi Customer Pricelist"
+            id="bi_customer_pricelist_action"
+            res_model="customer.pricelist.wiz"
+            binding_model="res.partner"
+            binding_views="list"
+            view_mode="form"
+            target="new"
+        />
+    </data>
+</odoo>

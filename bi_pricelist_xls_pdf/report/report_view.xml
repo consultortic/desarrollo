@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+    <template id="report_pricelist">
+        <t t-call="web.html_container">
+            <t t-call="web.internal_layout">
+                <t t-foreach="partner_list" t-as="line">
+                    <div class="page">
+                        <table width="100%">
+                                <thead style="align-center">
+                                    <tr style="background-color:#D3D3D3;page-break-inside: avoid;">
+                                        <td width="50%" style="text-align:left;">PARTNER NAME</td>
+                                        <td width="50%" style="text-align:right;">PRICELIST NAME</td>
+                                    </tr>
+                                    <tr>
+                                        <td width="50%" style="text-align:left;"><span t-esc="line['partner_name']"></span></td>
+                                        <td width="50%" style="text-align:right;"><span t-esc="line['pricelist_name']"></span></td>
+                                    </tr>
+                                </thead>
+                        </table>
+                        
+                        <table width="100%">
+                                <thead style="align-center">
+                                
+                                    <tr style="background-color:#D3D3D3;page-break-inside: avoid;">
+                                        <td width="30%" style="text-align:center;">PRODUCT NAME</td>
+                                        <td width="20%" style="text-align:center;">PRICE</td>
+                                        <td width="15%" style="text-align:center;">DISCOUNT PER(%)</td>
+                                        <td width="15%" style="text-align:center;">DISCOUNT AMOUNT</td>
+                                        <td width="20%" style="text-align:center;">DISCOUNT PRICE</td>
+                                    </tr>
+                                    <t t-foreach="data_list" t-as="data">
+                                    <tr>
+                                        <td width="30%" style="text-align:center;"><span t-esc="data['product_name']"></span></td>
+                                        <td width="20%" style="text-align:center;"><span t-esc="data['price']"></span></td>
+                                        <td width="15%" style="text-align:center;"><span t-esc="data['dis_per']"></span></td>
+                                        <td width="15%" style="text-align:center;"><span t-esc="data['dis_amt']"></span></td>
+                                        <td width="20%" style="text-align:center;"><span t-esc="data['dis_price']"></span></td>
+                                    </tr>
+                                    </t>
+                                </thead>
+                        </table>
+                        
+                        <p style="page-break-before:always;"> </p>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <report
+        string="Customer Pricelist PDF"
+        id="action_report_customer_pricelist_pdf"
+        model="customer.pricelist.wiz"
+        report_type="qweb-pdf"
+        name="bi_pricelist_xls_pdf.report_pricelist"
+        file="bi_pricelist_xls_pdf.report_pricelist"
+        menu="False"
+     />
+     
+    </data>
+</odoo>

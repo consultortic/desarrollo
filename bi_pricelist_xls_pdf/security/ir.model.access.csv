@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_customer_pricelist_extended,access_customer_pricelist_extended,model_customer_pricelist_extended,,1,1,1,1
+access_customer_pricelist_wiz,access_customer_pricelist_wiz,model_customer_pricelist_wiz,,1,1,1,1
